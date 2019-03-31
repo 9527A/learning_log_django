@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h1>Topics</h1>
+{% endblock header %}
+
+{% block content%}
+
+<ul style="list-style-type:none">
+    {% for topic in topics %}
+        <li>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            <h3>
+                <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+            </h3>
+            </div>
+        </div>
+        </li>
+    {% empty %}
+        <li>NO topics have been added yet.</li>
+    {% endfor %}
+</ul>
+<h3>
+<a href="{% url 'learning_logs:new_topic' %}">Add a new topic:
+</h3>
+{% endblock content %}
